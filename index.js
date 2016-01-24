@@ -30,14 +30,14 @@ var robot = null;
 //That way the streamer can type in chat without 123129301293120392 appearing. However the interface allows you to toggle interactive mode
 //and the streamer has a microphone too!
 var remap = {
-    'W':'1',
-    'S':'2',
-    'A':'3',
-    'D':'4',
-    'J':'5',
-    'K':'6',
-    'L':'7',
-    'I':'8'
+    'Up':'1',
+    'Down':'2',
+    'Left':'3',
+    'Right':'4',
+    'A':'5',
+    'B':'6',
+    'Start':'7',
+    'Select':'8'
 };
 
 function remapKey(code) {
