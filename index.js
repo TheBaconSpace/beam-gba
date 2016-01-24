@@ -30,14 +30,14 @@ var robot = null;
 //That way the streamer can type in chat without 123129301293120392 appearing. However the interface allows you to toggle interactive mode
 //and the streamer has a microphone too!
 var remap = {
-    'Up':'1',
-    'Down':'2',
-    'Left':'3',
-    'Right':'4',
-    'A':'5',
-    'B':'6',
-    'Start':'7',
-    'Select':'8'
+    'W':'1',
+    'S':'2',
+    'A':'3',
+    'D':'4',
+    'Q':'5',
+    'E':'6',
+    'C':'7',
+    'Z':'8'
 };
 
 function remapKey(code) {
@@ -115,7 +115,7 @@ function watchDog() {
     if(!recievingReports) {
         if(dogCount === 5) {
             console.log('clearing player input due to lack of reports.');
-            setKeys(['W','S','A','D','I','J','K','L'],false,true);
+            setKeys(['W','S','A','D','Q','E','C','Z'],false,true);
         }
         dogCount =dogCount + 1;
     } else {
