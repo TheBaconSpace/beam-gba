@@ -2,7 +2,7 @@ var Beam = require('beam-client-node');
 var Tetris = require('beam-interactive-node');
 
 //Lets us control the keyboard and mouse of the computer
-var controls = require("kbm-robot");
+var controls = require("keyboardz");
 
 //Transforms codes(65) into key names(A) and visa versa
 var keycode = require('keycode');
@@ -64,8 +64,6 @@ function validateConfig() {
 }
 
 function setup() {
-    //kbm controls uses a background jar file to handle key events this starts it.
-    controls.startJar();
 
     if(!config) {
         console.log('Missing config file cannot proceed, Please create a config file. Check the readme for help!');
@@ -224,19 +222,20 @@ function setKeys(keys,status,remap) {
  * @param {Boolean} status true to push AND HOLD the button, false to let go. null to do nothing.
  */
 function setKey(key,status) {
-    //Beam reports back keycodes, convert them to keynames, which our robot understands
+    //Beam reports back keycodes, convert them to keynames, which robotjs accepts
     if(typeof key === 'number') {
         key = keycode(key);
     }
-    //Our robot library is meant to be used for sequences of actions, everytime we do something
-    //we have to call .go to finish the chain;
+
+    //Robotjs wants 'down' or 'up', I prefer true or false for the rest of my program
+    //handle that here
     if(status) {
-        controls.press(key).go();
+        controls.holdKey(key.toUpperCase());
     } else {
-        controls.release(key).go();
+        controls.releaseKey(key.toLowerCase());
     }
-    //Rebound for status reporting
-    status = (status) ? 'down' : 'up';
+
+    controls.keyToggle(key, status);
 }
 
 
