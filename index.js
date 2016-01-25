@@ -234,8 +234,6 @@ function setKey(key,status) {
     } else {
         controls.releaseKey(key.toLowerCase());
     }
-
-    controls.keyToggle(key, status);
 }
 
 
